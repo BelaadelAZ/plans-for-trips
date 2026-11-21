@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#102c48"><meta name="description" content="Atelier Fiches : concevez des fiches pédagogiques structurées à partir de vos cours et documents de référence."><title>Atelier Fiches | Générateur pédagogique</title><link rel="stylesheet" href="./assets/style.css"></head><body>
+<div id="app" class="app-shell">
+  <aside class="sidebar">
+   <a href="#" class="brand"><span class="brand-icon">✦</span><span><strong>ATELIER</strong><small>FICHES PÉDAGOGIQUES</small></span></a>
+   <div class="sidebar-label">ESPACE DE CONCEPTION</div>
+   <nav class="steps-nav" aria-label="Étapes de création">
+    <button class="nav-step active" data-step="1"><span class="step-num">01</span><span><b>Références</b><small>Importer les documents</small></span></button>
+    <button class="nav-step" data-step="2"><span class="step-num">02</span><span><b>Paramètres</b><small>Personnaliser la fiche</small></span></button>
+    <button class="nav-step" data-step="3"><span class="step-num">03</span><span><b>Production</b><small>Générer et exporter</small></span></button>
+   </nav>
+   <div class="sidebar-bottom"><span class="side-light">✧</span><b>Conçu pour l'enseignant</b><p>Une pédagogie fidèle à vos ressources, jamais à des contenus inventés.</p></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="crumb">Espace de travail <span>/</span> <b id="crumbTitle">Références</b></div><div class="top-actions"><span class="private-pill"><span class="green-dot"></span>Traitement local des fichiers*</span><button class="outline-btn small" id="resetBtn">↻ Nouveau projet</button></div></header>
+    <div class="workspace">
+      <section class="stage active" id="stage1">
+        <div class="intro-tag">ÉTAPE 01 · FICHIERS SOURCES</div>
+        <h1>Vos documents, <em>notre point de départ.</em></h1>
+        <p class="intro-copy">Importez les références. Le contenu du cours guide la fiche, les textes officiels encadrent la pédagogie et l'exemple définit la structure et l'identité visuelle.</p>
+        <div class="reference-key"><div><span class="mini-symbol blue">01</span><span><b>Ce qu'on enseigne</b><small>Cours et ressources</small></span></div><span class="key-plus">+</span><div><span class="mini-symbol violet">02</span><span><b>Ce qu'on doit respecter</b><small>Programme et orientations</small></span></div><span class="key-plus">+</span><div><span class="mini-symbol mint">03</span><span><b>Comment présenter</b><small>Fiche exemplaire</small></span></div></div>
+        <div class="upload-grid">
+         <div class="upload-card" data-type="cours"><div class="upload-head"><span class="doc-icon doc-blue">▣</span><span class="required-tag">ESSENTIEL</span></div><h3>Cours et activités</h3><p>Notions scientifiques, documents, exercices et supports à exploiter.</p><label class="dropzone" for="inputCours"><span class="upload-arrow">↥</span><b>Glisser ou choisir vos fichiers</b><small>PDF, Word, TXT · plusieurs fichiers</small></label><input id="inputCours" type="file" accept=".pdf,.docx,.txt,.md" multiple hidden><div class="files-list" id="listCours"></div></div>
+         <div class="upload-card" data-type="modele"><div class="upload-head"><span class="doc-icon doc-mint">▤</span><span class="required-tag">ESSENTIEL</span></div><h3>Fiche pédagogique modèle</h3><p>Structure, rubriques, couleurs et présentation à reproduire.</p><label class="dropzone" for="inputModele"><span class="upload-arrow">↥</span><b>Joindre la fiche exemplaire</b><small>PDF, Word, TXT · un fichier</small></label><input id="inputModele" type="file" accept=".pdf,.docx,.txt,.md" hidden><div class="files-list" id="listModele"></div></div>
+         <div class="upload-card" data-type="orientations"><div class="upload-head"><span class="doc-icon doc-violet">◇</span><span class="optional-tag">RECOMMANDÉ</span></div><h3>Orientations pédagogiques</h3><p>Compétences, démarches didactiques et modalités d'évaluation.</p><label class="dropzone" for="inputOrientations"><span class="upload-arrow">↥</span><b>Ajouter les orientations</b><small>PDF, Word, TXT · plusieurs fichiers</small></label><input id="inputOrientations" type="file" accept=".pdf,.docx,.txt,.md" multiple hidden><div class="files-list" id="listOrientations"></div></div>
+         <div class="upload-card" data-type="programme"><div class="upload-head"><span class="doc-icon doc-gold">▥</span><span class="optional-tag">RECOMMANDÉ</span></div><h3>Programme officiel</h3><p>Contenus prescrits, progression et exigences du niveau scolaire.</p><label class="dropzone" for="inputProgramme"><span class="upload-arrow">↥</span><b>Ajouter le programme</b><small>PDF, Word, TXT · plusieurs fichiers</small></label><input id="inputProgramme" type="file" accept=".pdf,.docx,.txt,.md" multiple hidden><div class="files-list" id="listProgramme"></div></div>
+        </div>
+        <div class="callout"><span class="callout-icon">ⓘ</span><div><b>Votre fiche modèle fait autorité pour la présentation.</b><p>L'application tente d'en identifier les rubriques et les couleurs. Le format reste une reproduction approchée : une correspondance visuelle pixel par pixel n'est pas garantie. Les PDF scannés non sélectionnables nécessitent un OCR préalable.</p></div></div>
+        <div class="bottom-actions"><div class="step-hint"><span class="hint-dot"></span><span id="uploadCount">Aucun document importé</span></div><button class="primary-btn" id="toStep2">Continuer <span>→</span></button></div>
+      </section>
+      <section class="stage" id="stage2">
+        <div class="intro-tag">ÉTAPE 02 · PARAMÈTRES</div><h1>Une fiche <em>à votre image.</em></h1><p class="intro-copy">Vérifiez les informations. Les champs seront repris dans l'en-tête et pour organiser la progression.</p>
+        <div class="form-block"><div class="form-block-head"><span>01</span><div><h2>Informations générales</h2><p>Personnalisation administrative et didactique</p></div></div>
+          <div class="form-grid"><label>Discipline<input id="discipline" value="Sciences de la Vie et de la Terre" placeholder="Ex. : Mathématiques"></label><label>Niveau et filière<input id="niveau" value="" placeholder="Ex. : 2BAC Sciences physiques"></label><label>Établissement<input id="etablissement" placeholder="Nom de l'établissement"></label><label>Année scolaire<input id="annee" value="2026–2027" placeholder="2026–2027"></label><label>Unité / Chapitre<input id="chapitre" placeholder="Titre du chapitre"></label><label>Thème de la leçon<input id="theme" placeholder="Thème scientifique"></label><label>Nombre de séances<input id="seances" type="number" min="1" max="20" value="3"></label><label>Durée par séance (minutes)<input id="duree" type="number" min="20" max="240" value="120"></label><label>Enseignant·e<input id="enseignant" placeholder="Nom (facultatif)"></label><label>Numéro de fiche<input id="numero" placeholder="Ex. : 03"></label></div>
+        </div>
+        <div class="form-block"><div class="form-block-head"><span>02</span><div><h2>Fidélité au modèle</h2><p>Personnalisez les éléments de mise en forme détectés</p></div></div>
+         <div class="theme-row"><label>Couleur des rubriques <input type="color" id="colorSection" value="#c9e4ef"></label><label>Couleur des tableaux <input type="color" id="colorTable" value="#daebe4"></label><label>Couleur des séparateurs <input type="color" id="colorSession" value="#dfe9f4"></label><label>Police <select id="font"><option value="Cambria">Cambria (classique)</option><option value="Times New Roman">Times New Roman</option><option value="Arial">Arial</option><option value="Calibri">Calibri</option></select></label></div>
+         <label class="full-label">Rubriques et colonnes du modèle <textarea id="modelStructure" rows="3" placeholder="Détectées après import de la fiche modèle"></textarea></label><small class="form-help">Séparez les noms de colonnes par « | ». Par défaut, les huit colonnes de la fiche exemplaire analysée.</small>
+        </div>
+        <div class="form-block"><div class="form-block-head"><span>03</span><div><h2>Instructions complémentaires</h2><p>Contraintes pédagogiques, déroulement, supports et consignes</p></div></div><textarea id="instructions" rows="4" placeholder="Ex. : situations-problèmes avec contexte et question, consignes progressives, capacités observables, bilans vérifiables…"></textarea></div>
+        <div class="bottom-actions"><button class="outline-btn" id="back1">← Retour</button><button class="primary-btn" id="toStep3">Préparer la fiche <span>→</span></button></div>
+      </section>
+      <section class="stage" id="stage3">
+        <div class="intro-tag">ÉTAPE 03 · PRODUCTION</div><h1>La fiche prend <em>forme.</em></h1><p class="intro-copy">Générez une première version, relisez les contenus et exportez la fiche prête à utiliser.</p>
+        <div class="api-connection" aria-label="Configuration OpenAI">
+          <div class="api-connection-main"><span class="api-mark">AI</span><div><b>Connexion OpenAI API</b><p id="apiStatus" role="status">Connexion au serveur à vérifier.</p></div></div>
+          <div class="api-connection-tools"><label for="accessCode">Code d’accès au service (si configuré)<input type="password" id="accessCode" autocomplete="off" placeholder="Facultatif — pas la clé API OpenAI"></label><button class="outline-btn small" id="connectionBtn" type="button">Tester la configuration</button></div>
+          <small>La clé OpenAI est conservée sur le serveur. En cliquant sur « Générer », des extraits des documents seront envoyés à OpenAI ; leur utilisation peut être facturée.</small>
+        </div>
+        <div class="mode-cards"><button class="mode-card chosen" id="templateBtn"><span class="mode-icon">▤</span><span><b>Créer une trame structurée</b><small>Immédiat, sans IA. À compléter et corriger.</small></span><span class="mode-arr">↗</span></button><button class="mode-card ai-card" id="aiBtn"><span class="mode-icon">✦</span><span><b>Générer avec OpenAI</b><small>Crée une fiche à partir de vos références via l’API OpenAI.</small></span><span class="mode-arr">↗</span></button></div>
+        <div id="message" class="message" role="status"></div>
+        <div class="review-toolbar"><div><b id="previewHeading">Aperçu de la fiche</b><small id="documentMeta">Complétez les références pour lancer la production</small></div><div class="toolbar-buttons"><button id="editToggle" class="outline-btn small" disabled>✎ Modifier</button><button id="wordBtn" class="outline-btn small" disabled>↓ Word</button><button id="pdfBtn" class="primary-btn small" disabled>↓ PDF</button></div></div>
+        <div class="paper-area" id="paperArea"><div class="empty-state"><div class="empty-illustration"><span>▤</span><span>✧</span></div><h3>Votre fiche apparaîtra ici</h3><p>Choisissez une méthode ci-dessus pour créer une première version.</p></div></div>
+        <div class="qa-bar" id="qaBar" hidden></div>
+        <div class="bottom-actions"><button class="outline-btn" id="back2">← Revenir aux paramètres</button><button class="outline-btn" id="copyPromptBtn">Copier le prompt de production</button></div>
+      </section>
+    </div>
+  </main>
+</div>
+<div id="loadingOverlay" class="loading-overlay" hidden><div class="loading-card"><div class="spinner"></div><h3>Analyse et rédaction</h3><p id="loadingText">Exploitation des références en cours…</p><small>Les données de vos documents sont transmises au service IA uniquement si vous choisissez ce mode.</small></div></div>
+<script src="./vendor/jszip.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><script src="./assets/app.js"></script>
+</body></html>
